@@ -1,16 +1,260 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="AIPlatformDataSecurity - Home">
+  <div class="hero">
+    <h1>Welcome to AIPlatformDataSecurity</h1>
+    
+  </div>
+
+  <section class="content">
+    <div class="intro-section">
+      <h2>About Our Community</h2>
+      <p>
+        This is a global WhatsApp group of IT professionals around the world. The members of the group go through very harsh criticism that is blunt and ruthless if they fail to meet the learning schedule. We do enjoy good jokes and have fun in the group. In order to be part of this group the above is mandatory and you should not have an ego. Everyone is learning in the group!
+      </p>
+    </div>
+
+    <div class="moderator-section">
+      <h2>Our Moderator</h2>
+      <div class="moderator-card">
+        <h3>Joe M - "JoeVirus"</h3>
+        <p>
+          This group is moderated by Joe M, popularly known as JoeVirus among the group members. Joe's favorite rant is <strong>"You are as good as your last movie. Keep your brags fresh."</strong> Keep upskilling!
+        </p>
+        <a href="https://www.linkedin.com/in/joem75/" target="_blank" class="linkedin-link">
+          View Joe's LinkedIn Profile
+        </a>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <h2>Ready to Join?</h2>
+      <p>
+        If you're ready to embrace constructive criticism, have a thick skin, and are committed to continuous learning, we'd love to have you in our community.
+      </p>
+      <a href="/contact" class="cta-button">Get Started</a>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>🎯 Focused Learning</h3>
+        <p>Structured learning schedules with accountability</p>
+      </div>
+      <div class="feature-card">
+        <h3>🌍 Global Community</h3>
+        <p>Connect with IT professionals worldwide</p>
+      </div>
+      <div class="feature-card">
+        <h3>💬 Direct Feedback</h3>
+        <p>Honest, constructive criticism to help you grow</p>
+      </div>
+      <div class="feature-card">
+        <h3>🚀 Career Growth</h3>
+        <p>Accelerate your professional development</p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 4rem 0;
+    background: var(--gradient-primary);
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+    animation: slideInDown 0.8s ease-out;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+  }
+
+  @keyframes slideInDown {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .intro-section,
+  .moderator-section,
+  .cta-section {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+    animation: fadeInLeft 0.8s ease-out;
+    animation-fill-mode: both;
+  }
+
+  .intro-section { animation-delay: 0.2s; }
+  .moderator-section { animation-delay: 0.4s; }
+  .cta-section { animation-delay: 0.6s; }
+
+  @keyframes fadeInLeft {
+    from {
+      transform: translateX(-30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .intro-section h2,
+  .moderator-section h2,
+  .cta-section h2 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+  }
+
+  .moderator-card {
+    background-color: var(--bg-color);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+  }
+
+  .moderator-card h3 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+  }
+
+  .linkedin-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--gradient-success);
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(67, 233, 123, 0.4);
+  }
+
+  .linkedin-link:hover {
+    background: var(--gradient-tertiary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(56, 249, 215, 0.6);
+  }
+
+  .cta-section {
+    text-align: center;
+  }
+
+  .cta-button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    background: var(--gradient-secondary);
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 15px rgba(240, 147, 251, 0.4);
+  }
+
+  .cta-button:hover {
+    background: var(--gradient-tertiary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(79, 172, 254, 0.6);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .feature-card {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+  }
+
+  .feature-card:nth-child(1) { animation-delay: 0.1s; }
+  .feature-card:nth-child(2) { animation-delay: 0.2s; }
+  .feature-card:nth-child(3) { animation-delay: 0.3s; }
+  .feature-card:nth-child(4) { animation-delay: 0.4s; }
+
+  .feature-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+    border-color: var(--accent-color);
+  }
+
+  @keyframes fadeInUp {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .feature-card h3 {
+    background: var(--gradient-tertiary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .feature-card p {
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,316 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { videos } from '../data/videos';
+---
+
+<Layout title="YouTube Videos - AIPlatformDataSecurity">
+  <div class="hero">
+    <h1>YouTube Videos</h1>
+    <p class="hero-subtitle">Educational Content from Our Community</p>
+  </div>
+
+  <section class="content">
+    <div class="channel-info">
+      <h2>Cloud and DevOps Babies Channel</h2>
+      <p>
+        Our YouTube channel features educational content, discussions, and insights from our community members. 
+        From AWS best practices to career development advice, we cover topics that matter to IT security professionals.
+      </p>
+      <a href="https://www.youtube.com/@CloudandDevOpsBabies" target="_blank" class="channel-link">
+        Visit Our YouTube Channel
+      </a>
+    </div>
+
+    <div class="videos-grid">
+      {videos.map((video) => (
+        <div class="video-card">
+          <div class="video-thumbnail">
+            <img src={video.thumbnailUrl} alt={video.title} />
+            <div class="play-overlay">
+              <svg width="72" height="72" viewBox="0 0 72 72">
+                <circle cx="36" cy="36" r="36" fill="rgba(0,0,0,0.8)"/>
+                <polygon points="30,24 30,48 48,36" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <div class="video-info">
+            <h3>{video.title}</h3>
+            <p class="video-description">{video.description}</p>
+            <div class="video-meta">
+              <span class="video-date">
+                {new Date(video.publishedAt).toLocaleDateString('en-US', { 
+                  year: 'numeric', 
+                  month: 'long', 
+                  day: 'numeric' 
+                })}
+              </span>
+            </div>
+            <a href={`https://www.youtube.com/watch?v=${video.videoId}`} target="_blank" class="watch-button">
+              Watch Video
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="subscribe-section">
+      <h2>Stay Updated</h2>
+      <p>
+        Subscribe to our YouTube channel to get notified about new videos, live sessions, and community discussions.
+      </p>
+      <a href="https://www.youtube.com/@CloudandDevOpsBabies?sub_confirmation=1" target="_blank" class="subscribe-button">
+        Subscribe Now
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+    animation: slideInDown 0.8s ease-out;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+  }
+
+  @keyframes slideInDown {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .channel-info {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+    text-align: center;
+  }
+
+  .channel-info h2 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+  }
+
+  .channel-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #ff0000 0%, #ff6b6b 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+  }
+
+  .channel-link:hover {
+    background: linear-gradient(135deg, #cc0000 0%, #ff4757 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(204, 0, 0, 0.6);
+  }
+
+  .videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  .video-card {
+    background-color: var(--card-bg);
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+  }
+
+  .video-card:nth-child(1) { animation-delay: 0.1s; }
+  .video-card:nth-child(2) { animation-delay: 0.2s; }
+  .video-card:nth-child(3) { animation-delay: 0.3s; }
+  .video-card:nth-child(4) { animation-delay: 0.4s; }
+
+  @keyframes fadeInUp {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .video-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 40px rgba(255, 121, 198, 0.4);
+    border-color: var(--pink-accent);
+  }
+
+  .video-thumbnail {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .video-card:hover .video-thumbnail img {
+    transform: scale(1.05);
+  }
+
+  .play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.9;
+    transition: all 0.3s ease;
+  }
+
+  .video-card:hover .play-overlay {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .video-info {
+    padding: 1.5rem;
+  }
+
+  .video-info h3 {
+    background: var(--gradient-tertiary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .video-description {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  .video-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .video-date {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .watch-button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--gradient-secondary);
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(240, 147, 251, 0.4);
+  }
+
+  .watch-button:hover {
+    background: var(--gradient-success);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(67, 233, 123, 0.6);
+  }
+
+  .subscribe-section {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+    text-align: center;
+  }
+
+  .subscribe-section h2 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+  }
+
+  .subscribe-button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #ff0000 0%, #ff6b6b 50%, #ff4757 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+  }
+
+  .subscribe-button:hover {
+    background: linear-gradient(135deg, #cc0000 0%, #ff4757 50%, #ff3838 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(204, 0, 0, 0.6);
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .videos-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .video-thumbnail {
+      height: 180px;
+    }
+  }
+</style>
