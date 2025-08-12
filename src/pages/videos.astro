@@ -25,12 +25,20 @@ import { videos } from '../data/videos';
       {videos.map((video) => (
         <div class="video-card">
           <div class="video-thumbnail">
-            <img src={video.thumbnailUrl} alt={video.title} />
+            <img 
+              src={video.thumbnailUrl} 
+              alt={video.title}
+              loading="lazy"
+              onerror="this.src='https://i.ytimg.com/vi/{video.videoId}/default.jpg'; this.onerror=null;"
+            />
             <div class="play-overlay">
               <svg width="72" height="72" viewBox="0 0 72 72">
                 <circle cx="36" cy="36" r="36" fill="rgba(0,0,0,0.8)"/>
                 <polygon points="30,24 30,48 48,36" fill="white"/>
               </svg>
+            </div>
+            <div class="video-duration">
+              <span class="duration-badge">HD</span>
             </div>
           </div>
           <div class="video-info">
@@ -69,7 +77,7 @@ import { videos } from '../data/videos';
   .hero {
     text-align: center;
     padding: 4rem 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background: var(--gradient-primary);
     border-radius: 1rem;
     margin-bottom: 3rem;
     animation: slideInDown 0.8s ease-out;
@@ -125,7 +133,7 @@ import { videos } from '../data/videos';
     display: inline-block;
     margin-top: 1rem;
     padding: 0.75rem 1.5rem;
-    background: linear-gradient(135deg, #ff0000 0%, #ff6b6b 100%);
+    background: linear-gradient(135deg, #c85b5b 0%, #b86b6b 100%);
     color: white;
     text-decoration: none;
     border-radius: 0.5rem;
@@ -135,7 +143,7 @@ import { videos } from '../data/videos';
   }
 
   .channel-link:hover {
-    background: linear-gradient(135deg, #cc0000 0%, #ff4757 100%);
+    background: linear-gradient(135deg, #a84b4b 0%, #c85757 100%);
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(204, 0, 0, 0.6);
   }
@@ -191,6 +199,7 @@ import { videos } from '../data/videos';
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
+    border-radius: 0.5rem 0.5rem 0 0;
   }
 
   .video-card:hover .video-thumbnail img {
@@ -209,6 +218,22 @@ import { videos } from '../data/videos';
   .video-card:hover .play-overlay {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .video-duration {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+  }
+
+  .duration-badge {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
   }
 
   .video-info {
@@ -280,7 +305,7 @@ import { videos } from '../data/videos';
     display: inline-block;
     margin-top: 1rem;
     padding: 1rem 2rem;
-    background: linear-gradient(135deg, #ff0000 0%, #ff6b6b 50%, #ff4757 100%);
+    background: linear-gradient(135deg, #c85b5b 0%, #b86b6b 50%, #c85757 100%);
     color: white;
     text-decoration: none;
     border-radius: 0.5rem;
@@ -291,7 +316,7 @@ import { videos } from '../data/videos';
   }
 
   .subscribe-button:hover {
-    background: linear-gradient(135deg, #cc0000 0%, #ff4757 50%, #ff3838 100%);
+    background: linear-gradient(135deg, #a84b4b 0%, #c85757 50%, #b84848 100%);
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(204, 0, 0, 0.6);
   }
